@@ -1,0 +1,23 @@
+.App .buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 0;
+}
+
+button {
+  border: 1px solid #a39c9c;
+  cursor: pointer;
+  padding: 15px 25px;
+  font-size: 20px;
+  transition: all 0.4s;
+  margin: 30px 0;
+}
+
+button:hover,
+button:active,
+button:focus {
+  background: #a39c9c;
+  color: #fff;
+  border: 1px solid #e3e3e3;
+  outline: transparent;
+}
