@@ -1,22 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
+
+import useResources from '../utils/useResources';
+import UserList from './UserList';
+import './ResourceList.css';
 
 const ResourceList = ({ resource }) => {
-  const [resources, setResources] = useState([]);
+  const resources = useResources(resource);
 
-  const fetchResource = async resource => {
-    const response = await axios.get(
-      `https://jsonplaceholder.typicode.com/${resource}`
-    );
-
-    setResources(response.data);
-  };
-
-  useEffect(() => {
-    fetchResource(resource);
-  }, []);
-
-  return <div>{resources.length}</div>;
+  return (
+    <div>
+      <div className='resources'>
+        <ul>
+          <h2>{resource === 'todos' ? 'Todos' : 'Posts'}</h2>
+          {resources.map(record => (
+            <li key={record.id}>{record.title}</li>
+          ))}
+        </ul>
+        <UserList />
+      </div>
+    </div>
+  );
 };
 
 export default ResourceList;
